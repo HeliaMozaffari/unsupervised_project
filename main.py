@@ -68,7 +68,7 @@ def augment_image(image):
         image = tf.convert_to_tensor(image, dtype=tf.float32)
 
     tf.random.set_seed(None)
-    shift = tf.random.uniform([], -0.15, 0.15)
+    shift = tf.random.uniform([], -0.05, 0.05)
     image = tf.keras.preprocessing.image.apply_affine_transform(
         image.numpy(),
         tx=shift * image.shape[0],
@@ -76,7 +76,7 @@ def augment_image(image):
         fill_mode='nearest'
     )
 
-    zoom = tf.random.uniform([], 0.95, 1.05)
+    zoom = tf.random.uniform([], 0.98, 1.02)
     image = tf.keras.preprocessing.image.apply_affine_transform(
         image,
         zx=zoom,
